@@ -47,7 +47,12 @@ class EchoEmbedder(TextEmbedder):
         #     self.max_seq_length = max_seq_length
 
         self.tokenizer = AutoTokenizer.from_pretrained(model_name_or_path, token=os.environ['HF_TOKEN'])
-        
+
+        if "torch_dtype" in model_kwargs:
+            self.set_output_tensor()
+        else:
+            self.set_output_numpy()
+
         # ECHO EMBEDDING
         from jmteb.embedders.echo_embedding import EchoParser, EchoPooling, EchoEmbeddingsGemma2b
         templates = {
