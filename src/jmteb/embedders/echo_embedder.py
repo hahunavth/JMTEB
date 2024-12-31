@@ -109,9 +109,9 @@ class EchoEmbedder(TextEmbedder):
             res = all_embeddings
 
         if self.convert_to_numpy:
-            return res.numpy()
+            return res.cpu().numpy()
         else:
-            return res
+            return res.cpu()
 
     def _encode_batch(self, text: list[str], prefix: str | None = None) -> torch.Tensor:
         if prefix:
