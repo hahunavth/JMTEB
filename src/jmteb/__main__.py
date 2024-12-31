@@ -57,7 +57,8 @@ if __name__ == "__main__":
         "--evaluators",
         type=dict[str, EmbeddingEvaluator],
         enable_path=True,
-        default=str(Path(__file__).parent / "configs" / "jmteb.jsonnet"),
+        # default=str(Path(__file__).parent / "configs" / "jmteb.jsonnet"),
+        default=str(Path(__file__).parent / "configs" / "tasks" / "jsts.jsonnet"),
     )
     parser.add_argument("--config", action=ActionConfigFile, help="Path to the config file.")
     parser.add_argument("--save_dir", type=str, default=None, help="Directory to save the outputs")
